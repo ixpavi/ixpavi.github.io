@@ -119,7 +119,7 @@ const PressureGaugeSection = () => {
   const ventY = cy + (r + 26) * Math.sin((-35 * Math.PI) / 180);
 
   return (
-    <section className="py-24 md:py-28 bg-blueprint-deep grid-blueprint section-animate overflow-hidden">
+    <section className="py-14 md:py-28 bg-blueprint-deep grid-blueprint section-animate overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
           <div className="flex justify-center lg:justify-start">

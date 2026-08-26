@@ -4,10 +4,16 @@ import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getBrandBySlug, brands } from "@/data/brands";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 const BrandDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const brand = getBrandBySlug(slug ?? "");
+
+  useDocumentMeta(
+    brand ? `${brand.name} Distributor in India | Yati International` : "Yati International Inc.",
+    brand ? `${brand.summary} Yati International is an authorized ${brand.name} distributor supplying engineers and industrial plants across India.` : undefined,
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);

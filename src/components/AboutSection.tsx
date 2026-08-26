@@ -53,9 +53,9 @@ const ValueCard = ({ code, icon: Icon, title, description }: ValueCardProps) => 
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 md:py-28 bg-background grid-paper section-animate">
+    <section id="about" className="py-14 md:py-28 bg-background grid-paper section-animate">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left Content */}
           <div>
             <div className="mono-label text-[11px] text-primary/70 mb-4">About — Est. 2004</div>

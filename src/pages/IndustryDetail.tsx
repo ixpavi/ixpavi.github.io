@@ -4,10 +4,16 @@ import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getIndustryBySlug, industries } from "@/data/industries";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 const IndustryDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const industry = getIndustryBySlug(slug ?? "");
+
+  useDocumentMeta(
+    industry ? `${industry.name} Industrial Components | Yati International` : "Yati International Inc.",
+    industry ? `${industry.summary} Yati International supplies genuine Parker Hannifin, NBC Bearing and Demech components to engineers in the ${industry.name.toLowerCase()} sector.` : undefined,
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);

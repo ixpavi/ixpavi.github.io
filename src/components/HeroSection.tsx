@@ -40,7 +40,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative bg-blueprint-deep grid-blueprint overflow-hidden pt-[68px]">
-      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
+      <div className="relative z-10 container mx-auto px-4 py-10 md:py-20">
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-8 items-center">
           {/* Left — copy */}
           <div>
@@ -102,7 +102,7 @@ const HeroSection = () => {
         </div>
 
         {/* Dimension-line stat strip */}
-        <div className="mt-16 animate-fade-in" style={{ animationDelay: "0.45s" }}>
+        <div className="mt-10 md:mt-16 animate-fade-in" style={{ animationDelay: "0.45s" }}>
           <div className="dim-line dim-line-light mb-6" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat) => (

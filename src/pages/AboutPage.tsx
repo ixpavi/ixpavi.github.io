@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ShieldCheck, Atom, Users, MapPinned } from "luci
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedStat from "@/components/AnimatedStat";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 const values = [
   { code: "01", icon: ShieldCheck, title: "Authorized Supply", description: "Genuine Parker Hannifin, NBC Bearing, and Demech products, sourced only through official channels." },
@@ -20,6 +21,11 @@ const timeline = [
 ];
 
 const AboutPage = () => {
+  useDocumentMeta(
+    "About Yati International | Authorized Parker Hannifin Distributor Since 2004",
+    "Since 2004, Yati International has been an authorized Parker Hannifin, NBC Bearing and Demech distributor, supplying engineers and industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh and Gujarat.",
+  );
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

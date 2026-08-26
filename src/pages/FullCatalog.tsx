@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, LayoutGrid, List } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { catalogCategories, totalCatalogItems } from "@/data/fullCatalog";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 const brands = Array.from(new Set(catalogCategories.map((c) => c.brand)));
+const SITE_ORIGIN = "https://yatiinternational.in";
 
 type ViewMode = "grid" | "list";
 const VIEW_MODE_KEY = "yati-catalog-view";
@@ -16,6 +18,42 @@ const FullCatalog = () => {
     if (typeof window === "undefined") return "grid";
     return (localStorage.getItem(VIEW_MODE_KEY) as ViewMode) || "grid";
   });
+
+  // Product structured data so search engines can surface individual items,
+  // not just the page as a whole.
+  const productListJsonLd = useMemo(() => {
+    let position = 0;
+    const itemListElement = catalogCategories.flatMap((category) =>
+      category.items.map((item) => {
+        position += 1;
+        const image = item.image ?? category.image;
+        return {
+          "@type": "ListItem",
+          position,
+          item: {
+            "@type": "Product",
+            name: item.name,
+            description: item.description,
+            image: image.startsWith("http") ? image : `${SITE_ORIGIN}${image}`,
+            brand: { "@type": "Brand", name: category.brand },
+            category: category.title,
+          },
+        };
+      }),
+    );
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Yati International Full Catalog",
+      numberOfItems: itemListElement.length,
+      itemListElement,
+    };
+  }, []);
+
+  useDocumentMeta(
+    "Full Product Catalog | Parker Hannifin, NBC Bearing & Demech Distributor – Yati International",
+    `${totalCatalogItems}+ genuine industrial parts across hydraulics, pneumatics, filtration, valves, bearings and industrial coatings — authorized Parker Hannifin, NBC Bearing and Demech distributor in India.`,
+  );
 
   useEffect(() => {
     localStorage.setItem(VIEW_MODE_KEY, viewMode);
@@ -30,6 +68,7 @@ const FullCatalog = () => {
 
   return (
     <div className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productListJsonLd) }} />
       <Header />
       <main className="pt-[68px]">
         {/* Header strip */}
@@ -131,6 +170,8 @@ const FullCatalog = () => {
                           <img
                             src={item.image ?? category.image}
                             alt={item.name}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
@@ -154,6 +195,8 @@ const FullCatalog = () => {
                           <img
                             src={item.image ?? category.image}
                             alt={item.name}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>

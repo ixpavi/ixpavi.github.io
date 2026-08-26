@@ -7,7 +7,7 @@ const brands = Array.from(new Set(catalogCategories.map((c) => c.brand)));
 
 const ProductsSection = () => {
   return (
-    <section id="products" className="py-24 md:py-28 bg-secondary section-animate">
+    <section id="products" className="py-14 md:py-28 bg-secondary section-animate">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-14">
           <div className="max-w-xl">

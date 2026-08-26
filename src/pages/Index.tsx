@@ -10,6 +10,8 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useHashScroll } from "@/hooks/use-hash-scroll";
+import HowWeWork from "@/components/HowWeWork";
+import IndiaMap from "@/components/IndiaMap";
 
 const Index = () => {
   useScrollReveal();
@@ -23,9 +25,16 @@ const Index = () => {
         <ProductsSection />
         <BrandsSection />
         <AboutSection />
+        <HowWeWork />
         <PressureGaugeSection />
         <IndustriesSection />
         <CustomersSection />
+        <section className="py-10 md:py-20 bg-blueprint-deep grid-blueprint">
+          <div className="container mx-auto px-4">
+            <div className="mono-label text-[11px] text-yellow/80 mb-4 text-center">Regional Presence</div>
+            <IndiaMap />
+          </div>
+        </section>
         <ContactSection />
       </main>
       <Footer />

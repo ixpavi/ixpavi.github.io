@@ -60,7 +60,7 @@ const CustomersSection = () => {
   };
 
   return (
-    <section id="clients" className="py-24 md:py-28 bg-blueprint-deep grid-blueprint section-animate">
+    <section id="clients" className="py-14 md:py-28 bg-blueprint-deep grid-blueprint section-animate">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mb-14">
           <div className="mono-label text-[11px] text-yellow/80 mb-4">Supply Register</div>
@@ -87,6 +87,8 @@ const CustomersSection = () => {
                   <img
                     src={customer.logo}
                     alt={customer.name}
+                    loading="lazy"
+                    decoding="async"
                     className="max-h-14 max-w-[85%] object-contain"
                   />
                 ) : (

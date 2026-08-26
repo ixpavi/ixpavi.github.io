@@ -8,9 +8,9 @@ const fieldClass =
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 md:py-28 bg-background grid-paper section-animate">
+    <section id="contact" className="py-14 md:py-28 bg-background grid-paper section-animate">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Contact Info */}
           <div>
             <div className="mono-label text-[11px] text-primary/70 mb-4">Get in Touch</div>

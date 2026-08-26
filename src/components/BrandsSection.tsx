@@ -89,10 +89,10 @@ const BrandsSection = () => {
   };
 
   return (
-    <section id="brands" className="py-24 md:py-28 bg-blueprint-deep grid-blueprint section-animate">
+    <section id="brands" className="py-14 md:py-28 bg-blueprint-deep grid-blueprint section-animate">
       <div className="container mx-auto px-4">
         <div className="mono-label text-[11px] text-yellow/80 mb-4">Authorized Distributor</div>
-        <h2 className="text-3xl md:text-4xl font-display font-semibold text-white mb-16 max-w-xl">
+        <h2 className="text-3xl md:text-4xl font-display font-semibold text-white mb-10 md:mb-16 max-w-xl">
           Genuine products, direct from three manufacturers
         </h2>
 

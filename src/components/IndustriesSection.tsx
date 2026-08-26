@@ -16,9 +16,9 @@ const industries = [
 
 const IndustriesSection = () => {
   return (
-    <section id="industries" className="py-24 md:py-28 bg-background grid-paper section-animate">
+    <section id="industries" className="py-14 md:py-28 bg-background grid-paper section-animate">
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-10 md:mb-16">
           <div className="mono-label text-[11px] text-primary/70 mb-4">Sectors Served — 09</div>
           <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-5">
             Solutions for every industry
