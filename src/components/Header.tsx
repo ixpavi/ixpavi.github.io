@@ -44,7 +44,18 @@ const Header = () => {
   // normal navigation + useHashScroll's instant jump on the new page.
   const handleNavClick = (href: string) => (e: React.MouseEvent) => {
     const hashIndex = href.indexOf("#");
-    if (hashIndex === -1) return;
+
+    if (hashIndex === -1) {
+      // No hash — only special-cased for Home: if we're already on "/",
+      // smooth-scroll back to the top instead of Link doing nothing.
+      if (href === "/" && location.pathname === "/") {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
     const targetPath = href.slice(0, hashIndex) || "/";
     if (location.pathname !== targetPath) return;
 
@@ -90,6 +101,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.href}
+                  onClick={handleNavClick(item.href)}
                   title="Home"
                   aria-label="Home"
                   className="text-white/70 hover:text-yellow transition-colors"
