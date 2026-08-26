@@ -69,10 +69,11 @@ const AboutSection = () => {
               and cement manufacturers, and heavy engineering companies.
             </p>
             <p className="text-muted-foreground mb-10 leading-relaxed">
-              As an authorized distributor for Parker Hannifin since 2004, alongside NBC Bearing
-              and Demech Chemical Products, we provide genuine components backed by manufacturer
-              support — hydraulics, pneumatics, filtration, bearings, and industrial coatings —
-              with technical guidance to match the right product to your application.
+              Founded as an authorized distributor for Parker Hannifin in 2004, we added NBC
+              Bearing and Demech Chemical Products to the distributorship in the 2020s. We provide
+              genuine components backed by manufacturer support — hydraulics, pneumatics,
+              filtration, bearings, and industrial coatings — with technical guidance to match the
+              right product to your application.
             </p>
 
             <div className="dim-line mb-8" />

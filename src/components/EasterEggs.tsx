@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 const YATI = ["y", "a", "t", "i"];
@@ -99,8 +99,29 @@ const EasterEggs = () => {
       window.setTimeout(() => setBolts([]), 4200);
     };
 
+    // Mobile virtual keyboards frequently don't fire usable `keydown` events
+    // (swipe/predictive typing especially) — as a fallback, also check text
+    // actually entered into any on-page form field, which does reliably fire
+    // `input` events on touch devices.
+    const onInput = (e: Event) => {
+      const target = e.target as HTMLInputElement | HTMLTextAreaElement | null;
+      const value = target?.value;
+      if (typeof value !== "string") return;
+      const lower = value.toLowerCase();
+      if (lower.endsWith(YATI.join(""))) {
+        setStamp(true);
+        window.setTimeout(() => setStamp(false), 2200);
+      } else if (lower.endsWith(TORQUE.join(""))) {
+        triggerTorque();
+      }
+    };
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("input", onInput);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("input", onInput);
+    };
   }, []);
 
   if (!active && bolts.length === 0 && !stamp && wrenches.length === 0) return null;

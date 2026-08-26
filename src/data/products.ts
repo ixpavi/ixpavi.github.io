@@ -109,13 +109,13 @@ export const products: Product[] = [
   {
     slug: "seals-shielding",
     code: "CAT/08",
-    title: "Seals & Shielding",
-    description: "Precision seals, bearing isolators, and EMI/RFI shielding components",
+    title: "Seals & Bearing Isolators",
+    description: "Precision seals and bearing isolators",
     detail:
-      "Bearing isolators and EMI/RFI shielding components that protect rotating equipment and sensitive electronics in demanding environments.",
-    applications: ["Rotating equipment protection", "Electronics enclosures", "Power electronics"],
+      "Bearing isolators and precision seals that protect rotating equipment in demanding environments.",
+    applications: ["Rotating equipment protection", "Motors & gearboxes"],
     brand: "Parker Hannifin",
-    alt: "Precision Seals, Bearing Isolators, and EMI/RFI Shielding Components",
+    alt: "Precision Seals and Bearing Isolators",
     image: emiShieldingImg,
   },
   {

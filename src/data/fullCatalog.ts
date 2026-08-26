@@ -103,15 +103,13 @@ import filterXlhBag from "@/assets/products/parker/filters/xlh-filterbag.jpg";
 import filterYStrainer from "@/assets/products/parker/filters/y-strainer.jpg";
 import filterAkm18 from "@/assets/products/parker/filters/akm1-8.jpg";
 import filterBaldwinFoamAir from "@/assets/products/parker/filters/baldwin-foam-air.jpg";
+import filterAk120600 from "@/assets/products/parker/filters/ak-120-600.jpg";
+import filterAkm1095 from "@/assets/products/parker/filters/akm10-95.jpg";
+import filterFulfloBags from "@/assets/products/parker/filters/fulflo-filter-bags.jpg";
+import filterPco2Maintenance from "@/assets/products/parker/filters/pco2-maintenance-kits.jpg";
+import filterPco2QualityIncident from "@/assets/products/parker/filters/pco2-quality-incident-protection.jpg";
+import filterPotStrainer from "@/assets/products/parker/filters/pot-strainer.jpg";
 
-import emiSheetStock from "@/assets/products/parker/emi/sheet-stock.jpg";
-import emiSolidOShape from "@/assets/products/parker/emi/solid-o-shape.jpg";
-import emiWaveguide from "@/assets/products/parker/emi/waveguide.jpg";
-import emiInterfacial from "@/assets/products/parker/emi/interfacial.jpg";
-import emiDSubminiature from "@/assets/products/parker/emi/d-subminiature.jpg";
-import emiJamNut from "@/assets/products/parker/emi/jam-nut.jpg";
-import emiChoSeal1212 from "@/assets/products/parker/emi/cho-seal-1212.jpg";
-import emiChoSeal1221 from "@/assets/products/parker/emi/cho-seal-1221.jpg";
 
 import oringEpdm from "@/assets/products/parker/orings/epdm-e3622.jpg";
 import oringHnbr from "@/assets/products/parker/orings/hnbr-n8587.jpg";
@@ -283,38 +281,6 @@ export const catalogCategories: CatalogCategory[] = [
       { name: "F Series Low Lead Brass Solenoid Valves", description: "Direct-operated shut-off valves for healthy beverage dispense applications, NSF certified for contact with drinkable water and fluids.", image: valveFSeriesLowLeadBrass },
       { name: "K Series Low Lead Brass Solenoid Valves", description: "1/4\" ported direct-operated shut-off valves in foodstuffs-compliant materials, NSF certified for drinkable water and fluids.", image: valveKSeriesLowLeadBrass },
       { name: "W Series Low Lead Brass Solenoid Valves", description: "1/8\" ported direct-operated shut-off valves in foodstuffs-compliant materials, NSF certified for drinkable water and fluids.", image: valveWSeriesLowLeadBrass },
-    ],
-  },
-  {
-    slug: "emi-shielding-seals",
-    title: "EMI Shielding",
-    brand: "Parker Chomerics",
-    image: emiSheetStock,
-    intro:
-      "Parker Chomerics keeps high-powered electronics performing at their best with a broad line of EMI shielding solutions, including gaskets and conductive adhesives.",
-    items: [
-      { name: "Conductive Elastomer Sheet Stock Gaskets", description: "CHO-SEAL® electrically conductive elastomer gasket sheets that can be cut to size to make precision parts or quantities.", image: emiSheetStock },
-      { name: "Solid-O Shape Conductive Elastomer Extruded Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® materials.", image: emiSolidOShape },
-      { name: "Hollow-O Shape Conductive Elastomer Extruded Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® materials." },
-      { name: "Solid-D Shape Conductive Extruded Elastomer Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "Hollow-D Shape Conductive Extruded Elastomer Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "Channel Shape Conductive Elastomer Extruded Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "Rectangular Strip Conductive Elastomer Extruded Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "P-Shape Conductive Elastomer Extruded Gaskets", description: "Electrically conductive elastomer extruded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "Conductive Elastomer Co-Extruded Gaskets with Weather Seal", description: "CHO-SEAL® co-extruded and co-molded dual gaskets containing both conductive and non-conductive elements for environmental sealing and corrosion protection." },
-      { name: "Conductive Elastomer Jam Nut EMI Seals", description: "Available in various CHO-SEAL conductive elastomer materials, providing a moisture and pressure seal with EMI shielding; interchangeable with standard Mil Spec sizing.", image: emiJamNut },
-      { name: "Conductive Elastomer D-Subminiature Gaskets", description: "Constructed from CHO-SEAL® conductive elastomer to provide EMI shielding and environmental sealing between connector flanges and mating surfaces.", image: emiDSubminiature },
-      { name: "Conductive Elastomer Waveguide Gaskets", description: "CHO-SEAL® conductive waveguide EMI gasket materials providing effective shielding and pressure sealing for choke, cover and contact flanges.", image: emiWaveguide },
-      { name: "Conductive Elastomer Interfacial Gaskets", description: "Interfacial elastomer EMI seals provide an EMI shield and environmental seal at the intersection of two housing faces for a secure mating joint.", image: emiInterfacial },
-      { name: "Conductive Elastomer Mounting Flange Gaskets", description: "Used between connector flanges and mounting bulkheads to provide an environmental seal and EMI shield." },
-      { name: "Molded In-Place Cover Seals", description: "CHO-SEAL® molded-in-place gaskets formed onto covers, permitting an optimum seal profile that eliminates the need for adhesive and maximizes shielding effectiveness." },
-      { name: "Conductive Elastomer Molded Reinforced Seals", description: "CHO-SEAL® reinforced conductive/non-conductive elastomer seals with a corrosion-resistant base, reinforced with woven or knitted fabric or wire mesh." },
-      { name: "O-Ring Shape Conductive Elastomer Molded Gaskets", description: "Electrically conductive elastomer molded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "D-Ring Shape Conductive Elastomer Molded Gaskets", description: "Electrically conductive elastomer molded gaskets available in various CHO-SEAL® elastomer materials." },
-      { name: "CHO-SEAL 1212 Conductive Elastomer Gasket", description: "Silver-plated copper filler in silicone binder. 120 dB typical shielding, hard (80 Shore A) material for waveguide, choke, cover and grooved flanges.", image: emiChoSeal1212 },
-      { name: "CHO-SEAL 1215 Conductive Elastomer Gasket", description: "Silver-plated copper filler in silicone binder. 105–120 dB shielding, resists highest EMP-induced current; military gasket of choice in non-corrosive environments." },
-      { name: "CHO-SEAL 1217 Conductive Elastomer Gasket", description: "Silver-plated copper filler in fluorosilicone binder. 105–120 dB shielding with excellent processing for molding and extrusion." },
-      { name: "CHO-SEAL 1221 Conductive Elastomer Gasket", description: "Silver filler in fluorosilicone binder. >120 dB shielding — highest shielding effectiveness and through-conductivity performance; also available fabric-reinforced.", image: emiChoSeal1221 },
     ],
   },
   {

@@ -41,7 +41,7 @@ const HydraulicSchematic = () => {
           <path d="M60 86 l8 -3 v6 z" fill="#F5C518" fillOpacity="0.75" stroke="none" />
           <path d="M340 86 l-8 -3 v6 z" fill="#F5C518" fillOpacity="0.75" stroke="none" />
         </g>
-        <text x="200" y="72" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="11" fill="#F5C518" fillOpacity="0.85">
+        <text x="200" y="72" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="15" fill="#F5C518" fillOpacity="0.85">
           BORE ⌀63
         </text>
 
@@ -76,13 +76,13 @@ const HydraulicSchematic = () => {
         {/* Ports — glow when pressurized */}
         <rect x="96" y="96" width="12" height="14" stroke="white" strokeOpacity="0.5" strokeWidth="1.5" className={pressurized ? "fill-yellow/40 transition-colors duration-300" : "transition-colors duration-300"} />
         <line x1="102" y1="96" x2="102" y2="60" stroke="white" strokeOpacity="0.3" strokeWidth="1" />
-        <text x="102" y="50" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="10" fill="white" fillOpacity="0.55">
+        <text x="102" y="50" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fill="white" fillOpacity="0.55">
           PORT A
         </text>
 
         <rect x="292" y="210" width="12" height="14" stroke="white" strokeOpacity="0.5" strokeWidth="1.5" />
         <line x1="298" y1="224" x2="298" y2="255" stroke="white" strokeOpacity="0.3" strokeWidth="1" />
-        <text x="298" y="270" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="10" fill="white" fillOpacity="0.55">
+        <text x="298" y="270" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fill="white" fillOpacity="0.55">
           PORT B
         </text>
 
@@ -94,7 +94,7 @@ const HydraulicSchematic = () => {
           <path d="M250 252 l8 -3 v6 z" fill="#F5C518" fillOpacity="0.75" stroke="none" />
           <path d="M470 252 l-8 -3 v6 z" fill="#F5C518" fillOpacity="0.75" stroke="none" />
         </g>
-        <text x="360" y="280" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="11" fill="#F5C518" fillOpacity="0.85">
+        <text x="360" y="300" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="15" fill="#F5C518" fillOpacity="0.85">
           STROKE 250
         </text>
       </svg>

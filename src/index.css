@@ -178,6 +178,30 @@
   .card-shadow-hover {
     box-shadow: 0 10px 24px -8px hsla(214, 60%, 15%, 0.18);
   }
+
+  /* Cursor-tracked spotlight glow — pair with the useSpotlight hook, which
+     sets --spotlight-x/--spotlight-y as the mouse moves over the element. */
+  .spotlight-card {
+    position: relative;
+  }
+
+  .spotlight-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(
+      220px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+      hsla(45, 93%, 55%, 0.12),
+      transparent 70%
+    );
+  }
+
+  .spotlight-card:hover::after {
+    opacity: 1;
+  }
 }
 
 @layer utilities {
@@ -307,6 +331,18 @@
       transform: translateY(-110vh) rotate(360deg);
       opacity: 0.15;
     }
+  }
+
+  @keyframes plateWobble {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    20% { transform: rotate(-1.5deg) translateY(1px); }
+    40% { transform: rotate(1.5deg) translateY(0); }
+    60% { transform: rotate(-1deg) translateY(1px); }
+    80% { transform: rotate(1deg) translateY(0); }
+  }
+
+  .animate-plate-wobble {
+    animation: plateWobble 0.6s ease-in-out 2;
   }
 
   @keyframes gaugeShake {

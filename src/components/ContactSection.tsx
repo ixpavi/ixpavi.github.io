@@ -30,7 +30,8 @@ const ContactSection = () => {
                   <h4 className="mono-label text-[11px] text-muted-foreground mb-2">Phone</h4>
                   <div className="flex flex-col -my-2">
                     <a href="tel:+919414180022" className="text-foreground hover:text-primary transition-colors py-2 inline-block">
-                      +91 94141 80022
+                      +91 94141 80022{" "}
+                      <span className="text-muted-foreground text-xs">— Rajiv Kumar Sharma, Proprietor</span>
                     </a>
                     <a href="tel:+917442480036" className="text-foreground hover:text-primary transition-colors py-2 inline-block">
                       +91 0744 2480036

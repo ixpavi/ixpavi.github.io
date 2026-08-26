@@ -16,11 +16,11 @@ export const brands: Brand[] = [
     tagline: "Motion & control technologies",
     since: "Authorized since 2004",
     summary:
-      "Authorized distributor of Parker Hannifin since 2004, supplying hydraulics, pneumatics, filtration, seals, and EMI shielding across India's industrial sector.",
+      "Authorized distributor of Parker Hannifin since 2004, supplying hydraulics, pneumatics, filtration, and seals across India's industrial sector.",
     description: [
       "Parker Hannifin is one of the world's largest motion and control technology companies, engineering precision components for industries where failure isn't an option — from power generation to aerospace.",
       "Yati International has been an authorized distributor of Parker Hannifin since 2004, sourcing genuine components through official channels and backing every supply with manufacturer-grade technical guidance.",
-      "Our Parker range spans hydraulic cylinders, pumps and motors, filtration and fluid purification, directional and proportional valves, EMI shielding and precision seals (Chomerics), pneumatic components, hoses and tubing, and O-ring sealing solutions.",
+      "Our Parker range spans hydraulic cylinders, pumps and motors, filtration and fluid purification, directional and proportional valves, pneumatic components, hoses and tubing, and O-ring sealing solutions.",
     ],
     highlights: ["Genuine Products", "Authorized Since 2004", "Technical Support", "Manufacturer-Backed Warranty"],
     categories: [
@@ -28,7 +28,6 @@ export const brands: Brand[] = [
       "Hydraulic Pumps & Motors",
       "Hydraulic Filters & Fluid Purification",
       "Hydraulic Valves",
-      "EMI Shielding & Precision Seals",
       "Pneumatic Components",
       "Hoses & Tubing",
       "O-Rings & Sealing",

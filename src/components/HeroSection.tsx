@@ -92,7 +92,11 @@ const HeroSection = () => {
           </div>
 
           {/* Right — technical schematic, the real subject of the business */}
-          <div ref={schematicRef} className="hidden lg:block animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <div
+            ref={schematicRef}
+            className="mt-10 lg:mt-0 -mx-4 sm:mx-0 sm:w-full sm:max-w-[480px] sm:mx-auto lg:max-w-none lg:mx-0 animate-fade-in"
+            style={{ animationDelay: "0.2s" }}
+          >
             <HydraulicSchematic />
           </div>
         </div>

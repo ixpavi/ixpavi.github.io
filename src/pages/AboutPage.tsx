@@ -13,9 +13,9 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2004", label: "Founded", description: "Yati International Inc. established in Kota, Rajasthan, becoming an authorized distributor for Parker Hannifin." },
-  { year: "2000s", label: "Critical Infrastructure", description: "Began supplying nuclear and thermal power stations, where component reliability is non-negotiable." },
-  { year: "2010s", label: "Portfolio Expansion", description: "Added NBC Bearing and Demech Chemical Products to the distributorship, broadening into bearings and industrial coatings." },
+  { year: "2004", label: "Founded", description: "Yati International Inc. established in Kota, Rajasthan by Rajiv Kumar Sharma, becoming an authorized distributor for Parker Hannifin and beginning supply to nuclear and thermal power stations, where component reliability is non-negotiable." },
+  { year: "2010s", label: "Major Clients", description: "Grew into many of our largest long-term customer relationships — including thermal power stations, cement manufacturers, and heavy engineering companies across the region." },
+  { year: "2020s", label: "Portfolio Expansion", description: "Added NBC Bearing and Demech Chemical Products to the distributorship, broadening into bearings and industrial coatings." },
   { year: "Today", label: "Regional Partner", description: "Supplying plants across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat from our base in Kota." },
 ];
 
@@ -55,10 +55,11 @@ const AboutPage = () => {
                   and cement manufacturers, and heavy engineering companies.
                 </p>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
-                  As an authorized distributor for Parker Hannifin since 2004, alongside NBC Bearing
-                  and Demech Chemical Products, we provide genuine components backed by manufacturer
-                  support — hydraulics, pneumatics, filtration, bearings, and industrial coatings —
-                  with technical guidance to match the right product to your application.
+                  Founded by Rajiv Kumar Sharma as an authorized distributor for Parker Hannifin in
+                  2004, we added NBC Bearing and Demech Chemical Products to the distributorship in
+                  the 2020s. We provide genuine components backed by manufacturer support —
+                  hydraulics, pneumatics, filtration, bearings, and industrial coatings — with
+                  technical guidance to match the right product to your application.
                 </p>
                 <p className="text-muted-foreground mb-10 leading-relaxed">
                   We don't just supply parts — we understand the environments they run in. Many of

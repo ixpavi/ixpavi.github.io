@@ -15,7 +15,7 @@ export const industries: Industry[] = [
     summary: "Atomic energy stations and associated facilities",
     description:
       "Atomic energy stations demand components certified to the tightest tolerances, where a single point of failure has consequences far beyond downtime. We've supplied hydraulic and sealing components to Rajasthan Atomic Power Station, Narora Atomic Power Station, and Kakrapar Atomic Power Station, and to the Heavy Water Plant in Kota.",
-    needs: ["Certified hydraulic cylinders and valves for critical systems", "High-integrity seals and O-rings", "EMI shielding for control electronics", "Traceable, authorized-channel sourcing"],
+    needs: ["Certified hydraulic cylinders and valves for critical systems", "High-integrity seals and O-rings", "Traceable, authorized-channel sourcing"],
   },
   {
     slug: "fertilizer-chemical",
@@ -77,7 +77,7 @@ export const industries: Industry[] = [
     name: "Manufacturing & Precision Engineering",
     summary: "Manufacturing and precision-engineering organizations",
     description:
-      "Precision manufacturers need components that perform to exact specification, run after run. We've supplied Hero MotoCorp Ltd., MTAR Technologies, and Key Bouvet Engineering Ltd.",
+      "Precision manufacturers need components that perform to exact specification, run after run. We've supplied Hero MotoCorp Ltd., MTAR Technologies, and Kay Bouvet Engineering Ltd.",
     needs: ["Precision pneumatic actuators and cylinders", "Compact hydraulic components for tight envelopes", "Precision bearings for automated machinery", "Consistent, quality-assured supply"],
   },
   {
