@@ -1,85 +1,106 @@
-import { Users, Target, Zap, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ShieldCheck, Atom, Users, MapPinned, ArrowRight, type LucideIcon } from "lucide-react";
+import AnimatedStat from "@/components/AnimatedStat";
+import { useTilt } from "@/hooks/use-tilt";
 
 const values = [
   {
-    icon: Target,
-    title: "Quality First",
-    description: "We source only genuine products from authorized channels, ensuring reliability and performance.",
+    code: "01",
+    icon: ShieldCheck,
+    title: "Authorized Supply",
+    description: "Genuine Parker Hannifin, NBC Bearing, and Demech products, sourced only through official channels.",
   },
   {
+    code: "02",
+    icon: Atom,
+    title: "Critical-Environment Experience",
+    description: "Trusted by nuclear, thermal power, and fertilizer plants where reliability isn't optional.",
+  },
+  {
+    code: "03",
     icon: Users,
-    title: "Customer Focus",
-    description: "Your success is our priority. We provide personalized solutions tailored to your needs.",
+    title: "Long-Term Relationships",
+    description: "Many customer relationships span well over a decade, built on consistent, dependable supply.",
   },
   {
-    icon: Zap,
-    title: "Fast Delivery",
-    description: "Extensive inventory and efficient logistics ensure quick turnaround times.",
-  },
-  {
-    icon: Globe,
-    title: "Industry Expertise",
-    description: "Decades of experience serving diverse industries with specialized knowledge.",
+    code: "04",
+    icon: MapPinned,
+    title: "Regional Reach",
+    description: "Serving industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat.",
   },
 ];
 
+interface ValueCardProps {
+  code: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const ValueCard = ({ code, icon: Icon, title, description }: ValueCardProps) => {
+  const tiltRef = useTilt<HTMLDivElement>(5);
+  return (
+    <div ref={tiltRef} className="plate p-6 card-shadow hover:card-shadow-hover transition-shadow duration-300">
+      <div className="flex items-center justify-between mb-4">
+        <Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
+        <span className="mono-label text-[10px] text-muted-foreground/60">Plate {code}</span>
+      </div>
+      <h3 className="text-base font-display font-semibold text-foreground mb-2">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+    </div>
+  );
+};
+
 const AboutSection = () => {
   return (
-    <section id="about" className="py-[90px] bg-background section-animate">
+    <section id="about" className="py-24 md:py-28 bg-background grid-paper section-animate">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5">
+            <div className="mono-label text-[11px] text-primary/70 mb-4">About — Est. 2004</div>
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-6 leading-tight">
               Your Trusted Industrial Partner Since 2004
             </h2>
-            <p className="text-muted-foreground mb-6">
-              Yati International Inc. has been a leading distributor of industrial components 
-              for over two decades. Based on a foundation of quality, reliability, and customer 
-              service, we've grown to become a trusted partner for businesses across multiple industries.
+            <p className="text-muted-foreground mb-5 leading-relaxed">
+              Since 2004, Yati International Inc. has supplied industrial components to plants
+              and organizations across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat —
+              including nuclear power stations, thermal power plants, refineries, fertilizer
+              and cement manufacturers, and heavy engineering companies.
             </p>
-            <p className="text-muted-foreground mb-8">
-              As an authorized distributor for Parker Hannifin and other premium brands, we 
-              provide genuine products backed by manufacturer warranties and comprehensive 
-              technical support. Our team of experts is dedicated to helping you find the 
-              right solutions for your applications.
+            <p className="text-muted-foreground mb-10 leading-relaxed">
+              As an authorized distributor for Parker Hannifin since 2004, alongside NBC Bearing
+              and Demech Chemical Products, we provide genuine components backed by manufacturer
+              support — hydraulics, pneumatics, filtration, bearings, and industrial coatings —
+              with technical guidance to match the right product to your application.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex items-center gap-3 p-4 bg-card border-l-4 border-accent card-shadow">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">20+</span>
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Years</div>
-                  <div className="text-sm text-muted-foreground">In Business</div>
-                </div>
+
+            <div className="dim-line mb-8" />
+
+            <div className="flex flex-wrap gap-10">
+              <div>
+                <div className="text-3xl font-display font-semibold text-primary"><AnimatedStat value="20+" /></div>
+                <div className="mono-label text-[10px] text-muted-foreground mt-1">Years in Business</div>
               </div>
-              <div className="flex items-center gap-3 p-4 bg-card border-l-4 border-accent card-shadow">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">15+</span>
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Brands</div>
-                  <div className="text-sm text-muted-foreground">We Represent</div>
-                </div>
+              <div>
+                <div className="text-3xl font-display font-semibold text-primary"><AnimatedStat value="2004" /></div>
+                <div className="mono-label text-[10px] text-muted-foreground mt-1">Parker Authorized Since</div>
               </div>
             </div>
+
+            <Link
+              to="/about"
+              className="group inline-flex items-center gap-2 mt-10 mono-label text-xs text-primary hover:text-foreground transition-colors py-2 -my-2"
+            >
+              Our Full Story
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
-          {/* Right Content - Values Grid */}
-          <div className="grid sm:grid-cols-2 gap-5">
+          {/* Right Content — Spec-plate values grid */}
+          <div className="grid sm:grid-cols-2 gap-4">
             {values.map((value) => (
-              <div
-                key={value.title}
-                className="p-6 bg-card border-l-[5px] border-accent card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1.5"
-              >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                  <value.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
-              </div>
+              <ValueCard key={value.title} {...value} />
             ))}
           </div>
         </div>

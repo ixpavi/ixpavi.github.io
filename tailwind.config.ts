@@ -57,15 +57,21 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        brand: {
-          dark: "hsl(var(--brand-blue-dark))",
-          DEFAULT: "hsl(var(--brand-blue))",
-          light: "hsl(var(--brand-blue-light))",
+        blueprint: {
+          deep: "hsl(var(--blueprint-deep))",
+          DEFAULT: "hsl(var(--blueprint))",
+          mid: "hsl(var(--blueprint-mid))",
+          line: "hsl(var(--blueprint-line))",
         },
-        gold: {
-          dark: "hsl(var(--gold-dark))",
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
+        paper: {
+          DEFAULT: "hsl(var(--paper))",
+          line: "hsl(var(--paper-line))",
+        },
+        ink: "hsl(var(--ink))",
+        steel: "hsl(var(--steel))",
+        yellow: {
+          DEFAULT: "hsl(var(--yellow))",
+          deep: "hsl(var(--yellow-deep))",
         },
       },
       borderRadius: {
@@ -74,7 +80,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', '"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       keyframes: {
         "accordion-down": {

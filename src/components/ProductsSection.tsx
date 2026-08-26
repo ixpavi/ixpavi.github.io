@@ -1,112 +1,60 @@
+import type { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import hydraulicsImg from "@/assets/hydraulics.jpg";
-import filtrationImg from "@/assets/filtration.jpg";
-import valvesImg from "@/assets/valves.jpg";
-import hosesImg from "@/assets/hoses.jpg";
-import sealsImg from "@/assets/seals.jpg";
-import pumpsImg from "@/assets/pumps.jpg";
-import pneumaticCylindersImg from "@/assets/pneumatic-cylinders.png";
-import emiShieldingImg from "@/assets/emi-shielding.png";
-import conveyorBeltsImg from "@/assets/conveyor-belts.png";
+import { catalogCategories, totalCatalogItems } from "@/data/fullCatalog";
 
-const products = [
-  {
-    title: "Hydraulic Systems",
-    description: "Cylinders, pumps, motors, and complete hydraulic solutions",
-    alt: "Parker Hannifin Hydraulic Systems, Cylinders, Pumps, and Motors",
-    image: hydraulicsImg,
-  },
-  {
-    title: "Filtration",
-    description: "Industrial filters for hydraulic, air, and fuel applications",
-    alt: "Industrial Filtration Systems for Hydraulic, Air, and Fuel Applications",
-    image: filtrationImg,
-  },
-  {
-    title: "Valves & Fittings",
-    description: "Precision valves, connectors, and fluid control components",
-    alt: "Precision Industrial Valves, Fittings, Connectors, and Fluid Control Components",
-    image: valvesImg,
-  },
-  {
-    title: "Hoses & Tubing",
-    description: "Industrial hoses, tubes, and fluid conveyance systems",
-    alt: "Industrial Hoses, Tubing, and Fluid Conveyance Systems",
-    image: hosesImg,
-  },
-  {
-    title: "Seals & O-Rings",
-    description: "Precision sealing solutions for all applications",
-    alt: "Precision Industrial Seals, O-Rings, and Sealing Solutions",
-    image: sealsImg,
-  },
-  {
-    title: "Pumps & Motors",
-    description: "High-performance pumps and hydraulic motors",
-    alt: "High-Performance Hydraulic Pumps and Motors",
-    image: pumpsImg,
-  },
-  {
-    title: "Pneumatic Actuators",
-    description: "Heavy-duty pneumatic cylinders and rotary actuators engineered for critical power and nuclear environments",
-    alt: "Heavy-Duty Pneumatic Cylinders and Rotary Actuators for Critical Environments",
-    image: pneumaticCylindersImg,
-  },
-  {
-    title: "EMI Shielding & Thermal",
-    description: "Precision EMI/RFI shielding materials and thermal interface products for sensitive power electronics",
-    alt: "Precision EMI/RFI Shielding Materials and Thermal Interface Products for Power Electronics",
-    image: emiShieldingImg,
-  },
-  {
-    title: "Conveyor Belts",
-    description: "High-durability modular and synthetic belts for robust industrial material handling",
-    alt: "High-Durability Modular and Synthetic Conveyor Belts for Industrial Material Handling",
-    image: conveyorBeltsImg,
-  },
-];
+const brands = Array.from(new Set(catalogCategories.map((c) => c.brand)));
 
 const ProductsSection = () => {
   return (
-    <section id="products" className="py-[90px] bg-secondary section-animate">
+    <section id="products" className="py-24 md:py-28 bg-secondary section-animate">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5">
-            Industrial Components & Solutions
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            We supply a comprehensive range of industrial components from world-leading
-            manufacturers, ensuring quality and reliability for your operations.
-          </p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-14">
+          <div className="max-w-xl">
+            <div className="mono-label text-[11px] text-primary/70 mb-4">Catalog</div>
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4">
+              Industrial Components &amp; Solutions
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              A comprehensive range of industrial components from world-leading manufacturers,
+              supplied with technical guidance for your application.
+            </p>
+          </div>
+          <div className="mono-label text-[11px] text-muted-foreground shrink-0">
+            {totalCatalogItems}+ products &middot; {catalogCategories.length} categories
+          </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {products.map((product) => (
-            <div
-              key={product.title}
-              className="group bg-card p-6 border-l-[5px] border-accent card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1.5"
-            >
-              <div className="aspect-[4/3] overflow-hidden rounded-lg mb-4">
-                <img
-                  src={product.image}
-                  alt={product.alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {product.title}
-              </h3>
-              <p className="text-muted-foreground mb-4">{product.description}</p>
-              <a
-                href="#contact"
-                className="inline-flex items-center text-primary font-semibold hover:text-accent hover:gap-2 transition-all"
+        {/* Brand index — dimension-line strip */}
+        <div className="border-t border-border">
+          {brands.map((brand, index) => {
+            const categories = catalogCategories.filter((c) => c.brand === brand);
+            const itemCount = categories.reduce((sum, c) => sum + c.items.length, 0);
+            return (
+              <div
+                key={brand}
+                className="stagger-item group grid grid-cols-[1fr_auto] sm:grid-cols-[240px_1fr_auto] items-center gap-4 sm:gap-6 py-6 border-b border-border hover:bg-card transition-colors"
+                style={{ "--stagger-index": index } as CSSProperties}
               >
-                Learn More <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-          ))}
+                <h3 className="font-display font-semibold text-foreground text-lg group-hover:text-primary transition-colors">{brand}</h3>
+                <p className="hidden sm:block text-muted-foreground text-sm truncate">
+                  {categories.map((c) => c.title).join(" · ")}
+                </p>
+                <span className="mono-label text-[11px] text-primary shrink-0">{itemCount} items</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA to full catalog */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/catalog"
+            className="group inline-flex items-center gap-3 bg-yellow text-blueprint-deep hover:bg-primary hover:text-primary-foreground transition-colors font-semibold mono-label text-xs px-8 py-4"
+          >
+            View Full Product Catalog
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

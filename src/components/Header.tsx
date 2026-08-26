@@ -1,90 +1,193 @@
-import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Home } from "lucide-react";
 import yatiMark from "@/assets/yati-mark-transparent.png";
 import yatiText from "@/assets/yati-text-transparent.png";
 
+const LOGO_EASTER_EGG_CLICKS = 5;
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [logoSpinning, setLogoSpinning] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
+  const logoResetTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    setLogoSpinning(true);
+    setTimeout(() => setLogoSpinning(false), 700);
+
+    const next = logoClicks + 1;
+    setLogoClicks(next);
+    clearTimeout(logoResetTimer.current);
+    logoResetTimer.current = setTimeout(() => setLogoClicks(0), 1500);
+
+    // Already home — clicking the logo shouldn't reset the page, just spin it.
+    if (location.pathname === "/") e.preventDefault();
+  };
 
   const navItems = [
-    { name: "Products", href: "#products" },
-    { name: "Brands", href: "#brands" },
-    { name: "About", href: "#about" },
-    { name: "Industries", href: "#industries" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Catalog", href: "/catalog" },
+    { name: "Brands", href: "/#brands" },
+    { name: "About", href: "/about" },
+    { name: "Industries", href: "/#industries" },
+    { name: "Customers", href: "/#customers" },
+    { name: "Contact", href: "/#contact" },
   ];
 
+  // If a nav link points to a section on the homepage and we're already
+  // there, smooth-scroll to it directly instead of letting React Router
+  // re-navigate (which reset scroll to top before jumping, feeling like a
+  // hard page reload). Cross-page hash links still fall through to Link's
+  // normal navigation + useHashScroll's instant jump on the new page.
+  const handleNavClick = (href: string) => (e: React.MouseEvent) => {
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    const targetPath = href.slice(0, hashIndex) || "/";
+    if (location.pathname !== targetPath) return;
+
+    e.preventDefault();
+    setIsMenuOpen(false);
+    const id = href.slice(hashIndex + 1);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      navigate(href, { replace: true });
+    }
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border animate-slide-down">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-blueprint-deep border-b border-white/10 animate-slide-down">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-[70px]">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-3 hover:scale-[1.03] transition-transform">
-            <img src={yatiMark} alt="Yati International" className="h-10 w-10 object-contain" />
-            <img src={yatiText} alt="Yati International Inc." className="h-8 md:h-10 w-auto" />
-          </a>
+        <div className="flex items-center justify-between h-[68px]">
+          {/* Logo — styled as a title-block "company" field */}
+          <Link to="/" onClick={handleLogoClick} className="relative flex items-center gap-3 group">
+            <img
+              src={yatiMark}
+              alt="Yati International"
+              className={`h-9 w-9 object-contain brightness-0 invert transition-transform group-hover:-rotate-12 ${
+                logoSpinning ? "duration-700 ease-out" : "duration-300"
+              }`}
+              style={logoSpinning ? { transform: "rotate(360deg)" } : undefined}
+            />
+            <div className="hidden sm:flex flex-col justify-center border-l border-white/15 pl-3">
+              <img src={yatiText} alt="Yati International Inc." className="h-5 w-auto brightness-0 invert" />
+              <span className="mono-label text-[9px] text-yellow/80 mt-0.5">Est. 2004 · Parker Authorized</span>
+            </div>
+            {logoClicks >= LOGO_EASTER_EGG_CLICKS && (
+              <span className="absolute left-0 -bottom-5 mono-label text-[9px] text-yellow whitespace-nowrap animate-fade-in">
+                torque spec: nominal. thanks for clicking. 🔩
+              </span>
+            )}
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="relative text-foreground hover:text-accent transition-colors font-medium text-sm tracking-wide after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:w-0 after:h-[2px] after:bg-accent after:transition-all hover:after:w-full"
-              >
-                {item.name}
-              </a>
-            ))}
+          <nav className="hidden lg:flex items-center gap-7">
+            {navItems.map((item) =>
+              item.name === "Home" ? (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  title="Home"
+                  aria-label="Home"
+                  className="text-white/70 hover:text-yellow transition-colors"
+                >
+                  <Home className="w-4 h-4" strokeWidth={1.75} />
+                </Link>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={handleNavClick(item.href)}
+                  className="mono-label text-[11px] text-white/70 hover:text-yellow transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ),
+            )}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="accent" size="lg" className="hover:bg-primary hover:text-primary-foreground" asChild>
-              <a href="#contact">Request Quote</a>
-            </Button>
+          {/* CTA Button — stamp style */}
+          <div className="hidden lg:flex items-center">
+            <Link
+              to="/#contact"
+              onClick={handleNavClick("/#contact")}
+              className="mono-label text-[11px] bg-yellow text-blueprint-deep font-semibold px-4 py-2 hover:bg-white active:scale-95 transition-all"
+            >
+              Request Quote
+            </Link>
           </div>
 
-          {/* Mobile Menu Button with Custom Animation */}
+          {/* Mobile Menu Button */}
           <button
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center p-2 focus:outline-none"
+            className="lg:hidden relative w-9 h-9 flex items-center justify-center text-white focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Navigation"
+            aria-expanded={isMenuOpen}
           >
-            <div className="relative w-6 h-5">
-              <span className={`hamburger-line top-0 ${isMenuOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : ''}`} />
-              <span className={`hamburger-line top-1/2 -translate-y-1/2 ${isMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'}`} />
-              <span className={`hamburger-line bottom-0 ${isMenuOpen ? 'bottom-1/2 translate-y-1/2 -rotate-45' : ''}`} />
-            </div>
+            <span className="relative block w-5 h-4">
+              <span
+                className={`absolute left-0 h-[2px] w-5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? "top-[7px] rotate-45" : "top-0 rotate-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-[7px] h-[2px] w-5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? "opacity-0 -translate-x-2" : "opacity-100 translate-x-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 h-[2px] w-5 bg-current transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? "top-[7px] -rotate-45" : "top-[14px] rotate-0"
+                }`}
+              />
+            </span>
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md animate-slide-down-menu shadow-lg">
-            <nav className="flex flex-col space-y-4 px-2">
-              {navItems.map((item, index) => (
-                <a
+        {/* Mobile Navigation — always mounted so both open and close animate smoothly */}
+        <div
+          className={`lg:hidden grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+            isMenuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="py-4 border-t border-white/10">
+              <nav className="flex flex-col space-y-1">
+              {navItems.map((item) => (
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-accent hover:pl-2 transition-all duration-200 font-medium py-2 border-b border-border/40 last:border-0"
-                  style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'both' }}
-                  onClick={() => setIsMenuOpen(false)}
+                  to={item.href}
+                  className="mono-label text-xs text-white/70 hover:text-yellow py-2.5 border-b border-white/5 last:border-0 flex items-center gap-2"
+                  onClick={(e) => {
+                    handleNavClick(item.href)(e);
+                    setIsMenuOpen(false);
+                  }}
                 >
-                  <span className="animate-slide-up inline-block">{item.name}</span>
-                </a>
+                  {item.name === "Home" && <Home className="w-3.5 h-3.5" strokeWidth={1.75} />}
+                  {item.name}
+                </Link>
               ))}
-              <div className="pt-2 animate-slide-up" style={{ animationDelay: `${navItems.length * 50}ms`, animationFillMode: 'both' }}>
-                <Button variant="accent" className="w-full hover:bg-primary hover:text-primary-foreground" onClick={() => setIsMenuOpen(false)} asChild>
-                  <a href="#contact">Request Quote</a>
-                </Button>
-              </div>
-            </nav>
+              <Link
+                to="/#contact"
+                className="mono-label text-[11px] text-center bg-yellow text-blueprint-deep font-semibold px-4 py-2.5 mt-3"
+                onClick={(e) => {
+                  handleNavClick("/#contact")(e);
+                  setIsMenuOpen(false);
+                }}
+              >
+                Request Quote
+              </Link>
+              </nav>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
 };
 
 export default Header;
+

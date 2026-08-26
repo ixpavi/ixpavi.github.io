@@ -1,69 +1,115 @@
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-industrial.jpg";
+import HydraulicSchematic from "@/components/HydraulicSchematic";
+import AnimatedStat from "@/components/AnimatedStat";
+import { useMagnetic } from "@/hooks/use-magnetic";
+
+const stats = [
+  { value: "20+", label: "Years in Business" },
+  { value: "2004", label: "Parker Authorized Since" },
+  { value: "9", label: "Industries Served" },
+  { value: "3", label: "Authorized Brands" },
+];
 
 const HeroSection = () => {
+  const schematicRef = useRef<HTMLDivElement>(null);
+  const primaryCtaRef = useMagnetic<HTMLAnchorElement>(0.2);
+  const secondaryCtaRef = useMagnetic<HTMLAnchorElement>(0.2);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        if (schematicRef.current) {
+          const offset = Math.min(window.scrollY, 600) * 0.12;
+          schematicRef.current.style.transform = `translateY(${offset}px)`;
+        }
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Background with subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background to-secondary" />
+    <section className="relative bg-blueprint-deep grid-blueprint overflow-hidden pt-[68px]">
+      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-8 items-center">
+          {/* Left — copy */}
+          <div>
+            <div className="mono-label text-[11px] text-yellow/90 mb-6 flex flex-wrap gap-x-6 gap-y-1 animate-fade-in">
+              <span>Dwg No. Yati&#8209;2004</span>
+              <span className="text-white/30">/</span>
+              <span>Rev. 2026</span>
+              <span className="text-white/30">/</span>
+              <span>Scale: Pan&#8209;India</span>
+            </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-[140px] pb-[100px]">
-        <div className="max-w-4xl">
-          <div className="animate-fade-in">
-            <span className="inline-block px-4 py-2 rounded-full bg-accent/20 text-primary font-semibold text-sm mb-6 tracking-wide border-l-4 border-accent">
-              AUTHORIZED PARKER HANNIFIN DISTRIBUTOR
-            </span>
+            <h1 className="text-4xl md:text-5xl font-display font-semibold text-white mb-6 leading-[1.1] animate-slide-up">
+              Industrial supply you can{" "}
+              <span className="inline-block bg-yellow text-blueprint-deep px-2 whitespace-nowrap">
+                depend on
+              </span>
+            </h1>
+
+            <p
+              className="text-base md:text-lg text-white/70 mb-10 max-w-[520px] leading-relaxed animate-slide-up"
+              style={{ animationDelay: "0.15s" }}
+            >
+              Authorized distributor for Parker Hannifin, NBC Bearing, and Demech Chemical
+              Products — supplying hydraulics, pneumatics, filtration, bearings, and industrial
+              coatings to nuclear, power, cement, fertilizer, and heavy engineering plants
+              across India since 2004.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+              <Button
+                size="xl"
+                className="bg-yellow text-blueprint-deep hover:bg-white rounded-none font-semibold mono-label text-xs"
+                asChild
+              >
+                <a href="#products" ref={primaryCtaRef} className="transition-transform duration-300 ease-out">
+                  Explore Catalog
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                size="xl"
+                variant="outline"
+                className="rounded-none border-white/25 text-white bg-transparent hover:bg-white/10 hover:text-white mono-label text-xs"
+                asChild
+              >
+                <a href="#contact" ref={secondaryCtaRef} className="transition-transform duration-300 ease-out">Contact Sales</a>
+              </Button>
+            </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-[42px] font-bold text-foreground mb-4 animate-slide-up leading-tight">
-            <span className="sr-only">Yati International Inc. - </span>
-            Engineering Excellence,{" "}
-            <span className="text-primary">Delivered</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-[600px] animate-slide-up" style={{ animationDelay: "0.15s" }}>
-            Your trusted partner for premium industrial components. Hydraulics, pneumatics,
-            filtration systems, and more from the world's leading manufacturers.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-            <Button variant="accent" size="xl" className="hover:bg-primary hover:text-primary-foreground active:scale-[0.96] transition-all" asChild>
-              <a href="#products">
-                Explore Products
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="outline" size="xl" className="border-foreground/20 hover:bg-primary hover:text-primary-foreground hover:border-primary" asChild>
-              <a href="#contact">Contact Sales</a>
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-border animate-fade-in" style={{ animationDelay: "0.45s" }}>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">20+</div>
-              <div className="text-muted-foreground text-sm">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground text-sm">Happy Clients</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">15+</div>
-              <div className="text-muted-foreground text-sm">Brand Partners</div>
-            </div>
-            <div>
-            </div>
+          {/* Right — technical schematic, the real subject of the business */}
+          <div ref={schematicRef} className="hidden lg:block animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <HydraulicSchematic />
           </div>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center p-2">
-          <div className="w-1 h-2 rounded-full bg-accent" />
+        {/* Dimension-line stat strip */}
+        <div className="mt-16 animate-fade-in" style={{ animationDelay: "0.45s" }}>
+          <div className="dim-line dim-line-light mb-6" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <div className="text-2xl md:text-3xl font-display font-semibold text-yellow mb-1">
+                  <AnimatedStat value={stat.value} />
+                </div>
+                <div className="mono-label text-[10px] text-white/65 leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

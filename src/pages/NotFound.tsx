@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,13 +10,20 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <div className="flex min-h-screen items-center justify-center bg-blueprint-deep grid-blueprint px-4">
+      <div className="text-center max-w-md">
+        <div className="mono-label text-[11px] text-yellow/80 mb-6">Dwg No. 404 / Not Found</div>
+        <h1 className="text-6xl font-display font-semibold text-white mb-4">404</h1>
+        <p className="text-white/70 mb-10">
+          This drawing doesn't exist in our register. The page you're looking for may have moved.
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 bg-yellow text-blueprint-deep hover:bg-white transition-colors font-semibold mono-label text-xs px-6 py-3"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Return Home
+        </Link>
       </div>
     </div>
   );

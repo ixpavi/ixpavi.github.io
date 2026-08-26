@@ -1,66 +1,93 @@
-import { Award, Shield, CheckCircle } from "lucide-react";
+import type { CSSProperties } from "react";
+import { CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import parkerDistributor from "@/assets/parker-distributor.png";
+import nbcLogo from "@/assets/brands/nbc-logo.png";
+import demechLogo from "@/assets/brands/demech-logo.png";
 
-const brands = [
-  { name: "Parker Hannifin", featured: true },
-  { name: "Eaton", featured: false },
-  { name: "Bosch Rexroth", featured: false },
-  { name: "Danfoss", featured: false },
-  { name: "SMC", featured: false },
-  { name: "Festo", featured: false },
-  { name: "Gates", featured: false },
-  { name: "Donaldson", featured: false },
+const otherBrands = [
+  {
+    slug: "nbc-bearing",
+    name: "NBC Bearing",
+    note: "Part of the CK Birla Group",
+    products: "All types of industrial bearings",
+    logo: nbcLogo,
+  },
+  {
+    slug: "demech-chemical",
+    name: "Demech Chemical Products Pvt. Ltd.",
+    note: "Industrial coatings & flooring",
+    products: "High-build specialty coatings, wear & abrasion-resistant products, flooring systems",
+    logo: demechLogo,
+  },
 ];
 
 const BrandsSection = () => {
   return (
-    <section id="brands" className="py-[90px] bg-background section-animate">
+    <section id="brands" className="py-24 md:py-28 bg-blueprint-deep grid-blueprint section-animate">
       <div className="container mx-auto px-4">
-        {/* Featured Partner - Parker */}
-        <div className="bg-card p-8 md:p-12 mb-16 border-l-[6px] border-accent card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1.5 max-w-[600px]">
-          <div className="flex flex-col gap-6">
-            <img src={parkerDistributor} alt="Parker Authorized Distributor" className="h-16 w-auto object-contain object-left mb-2 max-w-full" />
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+        <div className="mono-label text-[11px] text-yellow/80 mb-4">Authorized Distributor</div>
+        <h2 className="text-3xl md:text-4xl font-display font-semibold text-white mb-16 max-w-xl">
+          Genuine products, direct from three manufacturers
+        </h2>
+
+        {/* Featured Partner — Parker, as a nameplate bolted to the panel */}
+        <Link
+          to="/brands/parker-hannifin"
+          className="group relative block bg-white p-8 md:p-10 mb-8 max-w-[640px] hover:shadow-xl hover:-translate-y-1 transition-all"
+        >
+          <span className="absolute top-3 left-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+          <span className="absolute top-3 right-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+          <span className="absolute bottom-3 left-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+          <span className="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+          <div className="flex flex-col gap-5 px-2">
+            <img src={parkerDistributor} alt="Parker Authorized Distributor" className="h-14 w-auto object-contain object-left" />
+            <h3 className="text-xl md:text-2xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">
               Parker Hannifin Corporation
-            </h2>
-            <p className="text-muted-foreground">
-              As an authorized Parker Hannifin distributor, we provide genuine products
-              backed by full manufacturer warranty and technical support. Parker is the
-              global leader in motion and control technologies.
+            </h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Authorized distributor of Parker Hannifin since 2004, supplying Seals &amp; Shielding,
+              Bearing Isolators, Filtration, Pneumatic Products, Fluid Connectors, and Hose Pipes
+              across India's industrial sector.
             </p>
-            <div className="flex flex-wrap gap-4">
-              {["Genuine Products", "Full Warranty", "Technical Support", "Competitive Pricing"].map((item) => (
-                <span key={item} className="flex items-center gap-2 text-foreground text-sm">
-                  <CheckCircle className="w-4 h-4 text-accent" />
+            <div className="flex flex-wrap gap-4 pt-1">
+              {["Genuine Products", "Authorized Since 2004", "Technical Support"].map((item) => (
+                <span key={item} className="flex items-center gap-1.5 text-foreground text-xs mono-label">
+                  <CheckCircle className="w-3.5 h-3.5 text-primary" />
                   {item}
                 </span>
               ))}
             </div>
           </div>
-        </div>
+        </Link>
 
-        {/* Other Brands */}
-        <div className="mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            We Also Supply Products From
-          </h3>
-          <p className="text-muted-foreground">
-            Leading industrial manufacturers trusted worldwide
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {brands.filter(b => !b.featured).map((brand) => (
-            <div
+        {/* Other authorized brands */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {otherBrands.map((brand, index) => (
+            <Link
+              to={`/brands/${brand.slug}`}
               key={brand.name}
-              className="bg-card border-l-[5px] border-accent p-6 card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1.5 group"
+              className="stagger-item group relative block bg-white p-6 hover:shadow-xl hover:-translate-y-1 transition-all"
+              style={{ "--stagger-index": index } as CSSProperties}
             >
-              <span className="text-foreground font-semibold group-hover:text-primary transition-colors">
-                {brand.name}
-              </span>
-            </div>
+              <span className="absolute top-3 left-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+              <span className="absolute top-3 right-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+              <span className="absolute bottom-3 left-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+              <span className="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-blueprint-deep/20" />
+              <div className="px-2">
+                <img src={brand.logo} alt={brand.name} className="h-9 w-auto object-contain object-left mb-4" />
+                <span className="text-foreground font-display font-semibold text-lg group-hover:text-primary transition-colors">
+                  {brand.name}
+                </span>
+                <div className="text-xs mono-label text-primary mt-1 mb-2">{brand.note}</div>
+                <p className="text-muted-foreground text-sm leading-relaxed">{brand.products}</p>
+              </div>
+            </Link>
           ))}
         </div>
+        <p className="mono-label text-[10px] text-white/55 mt-6">
+          Additional authorized brands may be added as new distributorships are confirmed
+        </p>
       </div>
     </section>
   );
