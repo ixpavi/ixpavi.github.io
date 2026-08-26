@@ -31,7 +31,7 @@ const ContactSection = () => {
                   <div className="flex flex-col -my-2">
                     <a href="tel:+919414180022" className="text-foreground hover:text-primary transition-colors py-2 inline-block">
                       +91 94141 80022{" "}
-                      <span className="text-muted-foreground text-xs">— Rajiv Kumar Sharma, Proprietor</span>
+                      <span className="text-muted-foreground text-xs">— Rajiv Kumar Sharma</span>
                     </a>
                     <a href="tel:+917442480036" className="text-foreground hover:text-primary transition-colors py-2 inline-block">
                       +91 0744 2480036
@@ -55,11 +55,32 @@ const ContactSection = () => {
 
               <div className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" strokeWidth={1.5} />
-                <div>
+                <div className="min-w-0">
                   <h4 className="mono-label text-[11px] text-muted-foreground mb-2">Address</h4>
-                  <p className="text-foreground leading-relaxed">
+                  <a
+                    href="https://maps.app.goo.gl/tYYBegppskLdkDgn6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-primary transition-colors leading-relaxed block"
+                  >
                     Shop No. S30-S31, Chambal Industrial Area, DCM Road, Opposite Multimetals Ltd, Kota – 324003 (Raj), India
-                  </p>
+                  </a>
+                  <a
+                    href="https://maps.app.goo.gl/tYYBegppskLdkDgn6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-64 h-44 mt-3 border border-border overflow-hidden hover:border-primary transition-colors"
+                  >
+                    <iframe
+                      title="Yati International Inc. — Kota, Rajasthan location"
+                      src="https://www.google.com/maps?q=Shop+No.+S30-S31,+Chambal+Industrial+Area,+DCM+Road,+Kota,+Rajasthan+324003&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, pointerEvents: "none" }}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </a>
                 </div>
               </div>
             </div>

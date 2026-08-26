@@ -10,11 +10,9 @@ const Footer = () => {
 
   const fields = [
     { label: "Company", value: "Yati International Inc." },
-    { label: "Proprietor", value: "Rajiv Kumar Sharma" },
     { label: "Location", value: "Kota, Rajasthan, India" },
     { label: "Established", value: "2004" },
     { label: "Authorized", value: "Parker Hannifin · NBC Bearing · Demech Chemical Products" },
-    { label: "Registered", value: "GeM Seller · MSME" },
   ];
 
   const handleLogoClick = () => {
@@ -53,7 +51,7 @@ const Footer = () => {
           )}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+        <div className="grid sm:grid-cols-2 border-t border-l border-white/10">
           {fields.map((field) => (
             <div key={field.label} className="border-r border-b border-white/10 px-5 py-4">
               <div className="mono-label text-[10px] text-yellow/70 mb-1.5">{field.label}</div>

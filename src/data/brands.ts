@@ -40,11 +40,11 @@ export const brands: Brand[] = [
     since: "India's leading bearing manufacturer since 1946",
     summary: "All types of industrial bearings — deep groove, angular contact, thrust, taper, and specialty bearings.",
     description: [
-      "NBC Bearing is the brand of National Engineering Industries Ltd. (NEI), India's leading bearing manufacturer and exporter since 1946, and part of the CKA Birla Group.",
+      "NBC Bearing is the brand of National Engineering Industries Ltd. (NEI), India's leading bearing manufacturer and exporter since 1946, and part of the CK Birla Group.",
       "NBC is the only bearing manufacturer in the world to win both the Deming Application Award and the Deming Grand Prize for Total Quality Management — a mark of manufacturing discipline that carries through to every bearing that ships.",
       "Yati International supplies the full NBC range for rotating machinery, motors, gearboxes, railway axles, and automotive wheel ends across the industrial plants we serve.",
     ],
-    highlights: ["Est. 1946", "Deming Grand Prize Winner", "Part of CKA Birla Group", "3,100+ Bearing Variants"],
+    highlights: ["Est. 1946", "Deming Grand Prize Winner", "Part of CK Birla Group", "3,100+ Bearing Variants"],
     categories: ["Deep Groove & Angular Contact Ball Bearings", "Cylindrical & Taper Roller Bearings", "Spherical & Needle Roller Bearings", "Railway & Traction Motor Bearings", "Wheel Hub Bearing Units", "Clutch Release Bearings"],
   },
   {
