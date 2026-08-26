@@ -1,14 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, LayoutGrid, List } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { catalogCategories, totalCatalogItems } from "@/data/fullCatalog";
 
 const brands = Array.from(new Set(catalogCategories.map((c) => c.brand)));
 
+type ViewMode = "grid" | "list";
+const VIEW_MODE_KEY = "yati-catalog-view";
+
 const FullCatalog = () => {
   const [activeBrand, setActiveBrand] = useState<string>("All");
+  const [viewMode, setViewMode] = useState<ViewMode>(() => {
+    if (typeof window === "undefined") return "grid";
+    return (localStorage.getItem(VIEW_MODE_KEY) as ViewMode) || "grid";
+  });
+
+  useEffect(() => {
+    localStorage.setItem(VIEW_MODE_KEY, viewMode);
+  }, [viewMode]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,23 +54,51 @@ const FullCatalog = () => {
           </div>
         </div>
 
-        {/* Brand filter */}
+        {/* Brand filter + view toggle */}
         <div className="border-b border-border bg-background sticky top-[68px] z-30">
           <div className="container mx-auto px-4">
-            <div className="flex items-center gap-1 overflow-x-auto py-3 -mx-1 px-1">
-              {["All", ...brands].map((b) => (
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-1 overflow-x-auto py-3 -mx-1 px-1">
+                {["All", ...brands].map((b) => (
+                  <button
+                    key={b}
+                    onClick={() => setActiveBrand(b)}
+                    className={`mono-label text-[11px] px-3 py-2 whitespace-nowrap transition-colors ${
+                      activeBrand === b
+                        ? "bg-yellow text-blueprint-deep font-semibold"
+                        : "text-muted-foreground hover:text-primary"
+                    }`}
+                  >
+                    {b}
+                  </button>
+                ))}
+              </div>
+
+              {/* Grid / list view toggle */}
+              <div className="flex items-center shrink-0 border border-border">
                 <button
-                  key={b}
-                  onClick={() => setActiveBrand(b)}
-                  className={`mono-label text-[11px] px-3 py-2 whitespace-nowrap transition-colors ${
-                    activeBrand === b
-                      ? "bg-yellow text-blueprint-deep font-semibold"
-                      : "text-muted-foreground hover:text-primary"
+                  type="button"
+                  onClick={() => setViewMode("grid")}
+                  aria-label="Grid view"
+                  aria-pressed={viewMode === "grid"}
+                  className={`w-9 h-9 flex items-center justify-center transition-colors ${
+                    viewMode === "grid" ? "bg-yellow text-blueprint-deep" : "text-muted-foreground hover:text-primary"
                   }`}
                 >
-                  {b}
+                  <LayoutGrid className="w-4 h-4" />
                 </button>
-              ))}
+                <button
+                  type="button"
+                  onClick={() => setViewMode("list")}
+                  aria-label="List view"
+                  aria-pressed={viewMode === "list"}
+                  className={`w-9 h-9 flex items-center justify-center border-l border-border transition-colors ${
+                    viewMode === "list" ? "bg-yellow text-blueprint-deep" : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  <List className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -84,25 +123,50 @@ const FullCatalog = () => {
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
-                  {category.items.map((item) => (
-                    <div key={item.name} className="group bg-card hover:bg-secondary transition-colors">
-                      <div className="aspect-[4/3] overflow-hidden bg-white">
-                        <img
-                          src={item.image ?? category.image}
-                          alt={item.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
+                {viewMode === "grid" ? (
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+                    {category.items.map((item) => (
+                      <div key={item.name} className="group bg-card hover:bg-secondary transition-colors">
+                        <div className="aspect-[4/3] overflow-hidden bg-white">
+                          <img
+                            src={item.image ?? category.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-5">
+                          <h3 className="font-display font-semibold text-foreground text-sm mb-2 leading-snug">
+                            {item.name}
+                          </h3>
+                          <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+                        </div>
                       </div>
-                      <div className="p-5">
-                        <h3 className="font-display font-semibold text-foreground text-sm mb-2 leading-snug">
-                          {item.name}
-                        </h3>
-                        <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-px bg-border border border-border">
+                    {category.items.map((item) => (
+                      <div
+                        key={item.name}
+                        className="group bg-card hover:bg-secondary transition-colors flex items-center gap-4 p-3"
+                      >
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 overflow-hidden bg-white">
+                          <img
+                            src={item.image ?? category.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="font-display font-semibold text-foreground text-sm mb-1 leading-snug">
+                            {item.name}
+                          </h3>
+                          <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">{item.description}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </section>
             ))}
           </div>
