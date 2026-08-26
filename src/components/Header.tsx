@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Home } from "lucide-react";
 import yatiMark from "@/assets/yati-mark-transparent.png";
 import yatiText from "@/assets/yati-text-transparent.png";
@@ -9,7 +9,6 @@ const LOGO_EASTER_EGG_CLICKS = 5;
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const [logoSpinning, setLogoSpinning] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const logoResetTimer = useRef<ReturnType<typeof setTimeout>>();
@@ -33,7 +32,7 @@ const Header = () => {
     { name: "Brands", href: "/#brands" },
     { name: "About", href: "/about" },
     { name: "Industries", href: "/#industries" },
-    { name: "Customers", href: "/#customers" },
+    { name: "Clients", href: "/#clients" },
     { name: "Contact", href: "/#contact" },
   ];
 
@@ -65,7 +64,11 @@ const Header = () => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      navigate(href, { replace: true });
+      // Update the URL bar without going through React Router — using
+      // navigate() here would change `location.hash`, which re-triggers
+      // useHashScroll's effect and immediately snaps the page with an
+      // instant jump, canceling the smooth scroll we just started.
+      window.history.replaceState(null, "", href);
     }
   };
 
