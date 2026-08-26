@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Yati International Inc.</title>
+  <script>
+    // GitHub Pages has no server-side routing, so a direct load or refresh of
+    // any client-side route (e.g. /catalog) 404s. This redirects that request
+    // back to index.html with the intended path packed into the query string,
+    // and the matching script in index.html unpacks it before the app mounts.
+    // Based on the well-known spa-github-pages technique.
+    var l = window.location;
+    l.replace(
+      l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") +
+      l.pathname.split("/").slice(0, 1).join("/") + "/?/" +
+      l.pathname.slice(1).replace(/&/g, "~and~") +
+      (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+</body>
+</html>
