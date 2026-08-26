@@ -1,7 +1,7 @@
 import { MessageSquare, FileText, ClipboardCheck, Truck } from "lucide-react";
 
 const steps = [
-  { code: "01", icon: MessageSquare, title: "Inquiry", description: "Tell us the component, spec, or application — no minimum order." },
+  { code: "01", icon: MessageSquare, title: "Inquiry", description: "Tell us the component, spec, or application you need." },
   { code: "02", icon: FileText, title: "Quote", description: "We confirm availability and pricing, backed by the authorized channel." },
   { code: "03", icon: ClipboardCheck, title: "Order", description: "Purchase order confirmed, genuine stock sourced or arranged." },
   { code: "04", icon: Truck, title: "Delivery", description: "Delivered to your plant, with technical support if you need it." },
