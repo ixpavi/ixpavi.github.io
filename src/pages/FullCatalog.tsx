@@ -74,8 +74,8 @@ const FullCatalog = () => {
   }, []);
 
   useDocumentMeta(
-    "Full Product Catalog | Parker Hannifin, NBC Bearing & Demech Distributor – Yati International",
-    `${totalCatalogItems}+ genuine industrial parts across hydraulics, pneumatics, filtration, valves, bearings and industrial coatings — authorized Parker Hannifin, NBC Bearing and Demech distributor in India.`,
+    "Full Product Catalog | Parker Hannifin & Demech Distributor – Yati International",
+    `${totalCatalogItems}+ genuine industrial parts across hydraulics, pneumatics, filtration, valves and industrial coatings — authorized Parker Hannifin and Demech distributor in India.`,
   );
 
   useEffect(() => {

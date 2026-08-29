@@ -12,7 +12,7 @@ const Footer = () => {
     { label: "Company", value: "Yati International Inc." },
     { label: "Location", value: "Kota, Rajasthan, India" },
     { label: "Established", value: "2004" },
-    { label: "Authorized", value: "Parker Hannifin · NBC Bearing · Demech Chemical Products" },
+    { label: "Authorized", value: "Parker Hannifin · Demech Chemical Products" },
   ];
 
   const handleLogoClick = () => {

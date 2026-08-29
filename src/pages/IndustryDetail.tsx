@@ -12,7 +12,7 @@ const IndustryDetail = () => {
 
   useDocumentMeta(
     industry ? `${industry.name} Industrial Components | Yati International` : "Yati International Inc.",
-    industry ? `${industry.summary} Yati International supplies genuine Parker Hannifin, NBC Bearing and Demech components to engineers in the ${industry.name.toLowerCase()} sector.` : undefined,
+    industry ? `${industry.summary} Yati International supplies genuine Parker Hannifin and Demech components to engineers in the ${industry.name.toLowerCase()} sector.` : undefined,
   );
 
   useEffect(() => {

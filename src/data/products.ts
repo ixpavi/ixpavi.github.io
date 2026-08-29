@@ -6,7 +6,6 @@ import sealsImg from "@/assets/products/seals-orings.avif";
 import pumpsImg from "@/assets/products/pumps-motors.jpg";
 import pneumaticCylindersImg from "@/assets/products/pneumatic-components.jpg";
 import emiShieldingImg from "@/assets/products/seals-shielding.jpg";
-import bearingsImg from "@/assets/products/bearings.jpg";
 import coatingsFlooringImg from "@/assets/products/coatings-flooring.jpg";
 
 export interface Product {
@@ -119,20 +118,8 @@ export const products: Product[] = [
     image: emiShieldingImg,
   },
   {
-    slug: "bearings",
-    code: "CAT/09",
-    title: "Bearings",
-    description: "Full range of industrial bearings, supplied via NBC Bearing",
-    detail:
-      "The full NBC Bearing range — ball, roller, and specialty bearings — for rotating machinery across automotive, railway, and industrial applications.",
-    applications: ["Rotating machinery", "Motors & gearboxes", "Conveyor & material handling systems"],
-    brand: "NBC Bearing",
-    alt: "Sealed Industrial Ball Bearings",
-    image: bearingsImg,
-  },
-  {
     slug: "coatings-flooring",
-    code: "CAT/10",
+    code: "CAT/09",
     title: "Industrial Coatings & Flooring",
     description: "High-build specialty coatings, wear-resistant products, and flooring systems from Demech",
     detail:

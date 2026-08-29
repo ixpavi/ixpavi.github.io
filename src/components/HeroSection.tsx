@@ -9,7 +9,7 @@ const stats = [
   { value: "20+", label: "Years in Business" },
   { value: "2004", label: "Parker Authorized Since" },
   { value: "9", label: "Industries Served" },
-  { value: "3", label: "Authorized Brands" },
+  { value: "2", label: "Authorized Brands" },
 ];
 
 const HeroSection = () => {
@@ -63,10 +63,10 @@ const HeroSection = () => {
               className="text-base md:text-lg text-white/70 mb-10 max-w-[520px] leading-relaxed animate-slide-up"
               style={{ animationDelay: "0.15s" }}
             >
-              Authorized distributor for Parker Hannifin, NBC Bearing, and Demech Chemical
-              Products — supplying hydraulics, pneumatics, filtration, bearings, and industrial
-              coatings to nuclear, power, cement, fertilizer, and heavy engineering plants
-              across India since 2004.
+              Authorized distributor for Parker Hannifin and Demech Chemical Products —
+              supplying hydraulics, pneumatics, filtration, and industrial coatings to
+              nuclear, power, cement, fertilizer, and heavy engineering plants across
+              India since 2004.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>

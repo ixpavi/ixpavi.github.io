@@ -1,9 +1,8 @@
 import hydraulicsImg from "@/assets/products/hydraulic-systems.jpg";
 import pumpsImg from "@/assets/products/pumps-motors.jpg";
-import bearingsImg from "@/assets/products/bearings.jpg";
 import coatingsFlooringImg from "@/assets/products/coatings-flooring.jpg";
 
-// Real product photography, sourced from Parker Hannifin / NBC Bearing / Demech Chemical
+// Real product photography, sourced from Parker Hannifin / Demech Chemical
 import cyl2h3h from "@/assets/products/parker/cylinders/2h-3h-heavy-duty.png";
 import cyl2hx3hx from "@/assets/products/parker/cylinders/2hx-3hx-electrohydraulic.png";
 import cylHmi from "@/assets/products/parker/cylinders/hmi.png";
@@ -55,12 +54,6 @@ import pneumaticMaMan from "@/assets/products/parker/pneumatic-ma-man.png";
 import pneumaticHbt from "@/assets/products/parker/pneumatic-hbt.png";
 import pneumaticP1p from "@/assets/products/parker/pneumatic-p1p.png";
 
-import nbcBallBearings from "@/assets/products/nbc/ball-bearings.png";
-import nbcThrustBall from "@/assets/products/nbc/thrust-ball.png";
-import nbcCylindricalRoller from "@/assets/products/nbc/cylindrical-roller.png";
-import nbcTaperRoller from "@/assets/products/nbc/taper-roller.png";
-import nbcWheelHub from "@/assets/products/nbc/wheel-hub.png";
-import nbcClutchRelease from "@/assets/products/nbc/clutch-release.png";
 
 import demechGlassFlake from "@/assets/products/demech/glass-flake.png";
 import demechPolyurethane from "@/assets/products/demech/polyurethane.png";
@@ -353,27 +346,6 @@ export const catalogCategories: CatalogCategory[] = [
       { name: "Nitrile 70 Durometer O-Ring, UL Approved (N1499-70)", description: "Nitrile rubber (NBR) O-ring very compatible with oils and gases.", image: oringNitrileN1499 },
       { name: "Polyurethane O-Ring (Prädifa V1, Ultrathan®)", description: "TPU O-ring with high wear and extrusion resistance for high-pressure applications and small housings, green.", image: oringPolyurethaneV1 },
       { name: "Nitrile-Butadiene Rubber O-Ring, 70 Shore A (Prädifa N0674-70)", description: "NBR O-ring with good mechanical robustness for automotive, heavy duty, transportation and general industrial applications, black.", image: oringNitrileN0674Nbr },
-    ],
-  },
-  {
-    slug: "bearings",
-    title: "Bearings",
-    brand: "NBC Bearing",
-    image: bearingsImg,
-    intro:
-      "India's leading bearing manufacturer since 1946 — deep groove, angular contact, thrust, self-aligning and specialty bearings across a portfolio from 6 mm bore to 2,000 mm outer diameter.",
-    items: [
-      { name: "Deep Groove Ball Bearings", description: "General-purpose ball bearings for radial and moderate axial loads across motors, gearboxes and general machinery.", image: nbcBallBearings },
-      { name: "Angular Contact Ball Bearings", description: "Ball bearings designed to handle combined radial and axial loads in one direction, for pumps and precision spindles.", image: nbcBallBearings },
-      { name: "Thrust Ball Bearings", description: "Bearings designed specifically for axial load support in vertical-shaft applications.", image: nbcThrustBall },
-      { name: "Self-Aligning Ball Bearings", description: "Ball bearings that accommodate shaft misalignment and deflection in demanding mounting conditions.", image: nbcBallBearings },
-      { name: "Cylindrical Roller Bearings", description: "High radial-load-capacity roller bearings for heavy machinery, motors and gearboxes.", image: nbcCylindricalRoller },
-      { name: "Taper Roller Bearings", description: "Bearings supporting combined radial and axial loads, widely used in automotive wheel hubs and industrial gearboxes.", image: nbcTaperRoller },
-      { name: "Spherical Roller Bearings", description: "Self-aligning roller bearings for heavy radial loads with shaft misalignment tolerance, used in mills and crushers." },
-      { name: "Needle Roller Bearings", description: "Compact roller bearings with a thin cross-section for high radial load capacity in limited space." },
-      { name: "Railway Bearings (incl. Insulated Traction Motor Bearings)", description: "Bearings engineered for railway axle and traction-motor duty, including electrically insulated variants." },
-      { name: "Wheel Hub Bearing Units", description: "Preset, pre-lubricated hub bearing assemblies for automotive and light-commercial-vehicle wheel ends.", image: nbcWheelHub },
-      { name: "Clutch Release Bearings", description: "Bearings engineered for the clutch-release mechanism in manual-transmission vehicles.", image: nbcClutchRelease },
     ],
   },
   {

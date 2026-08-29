@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const DEFAULT_TITLE = "Yati International Inc. | Parker Hannifin Authorized Distributor India";
 const DEFAULT_DESCRIPTION =
-  "Yati International — authorized Parker Hannifin, NBC Bearing and Demech distributor in India since 2004. Genuine hydraulics, pneumatics, filtration, valves, bearings and industrial coatings for engineers and industrial plants.";
+  "Yati International — authorized Parker Hannifin and Demech distributor in India since 2004. Genuine hydraulics, pneumatics, filtration, valves and industrial coatings for engineers and industrial plants.";
 
 /**
  * Sets a page-specific <title> and meta description, since this is a

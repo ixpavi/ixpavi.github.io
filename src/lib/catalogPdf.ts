@@ -16,7 +16,7 @@ export function downloadCatalogPdf() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);
     doc.setTextColor(140);
-    doc.text("Yati International Inc. — Authorized Distributor: Parker Hannifin · NBC Bearing · Demech Chemical Products", MARGIN, PAGE_HEIGHT - 10);
+    doc.text("Yati International Inc. — Authorized Distributor: Parker Hannifin · Demech Chemical Products", MARGIN, PAGE_HEIGHT - 10);
     doc.text(String(page), PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 10, { align: "right" });
   };
 
@@ -46,7 +46,7 @@ export function downloadCatalogPdf() {
   doc.setTextColor(255, 200, 0);
   doc.text("Authorized Distributor", MARGIN, 90);
   doc.setTextColor(230, 230, 230);
-  doc.text("Parker Hannifin Corporation  ·  NBC Bearing  ·  Demech Chemical Products", MARGIN, 97);
+  doc.text("Parker Hannifin Corporation  ·  Demech Chemical Products", MARGIN, 97);
   doc.setFontSize(10);
   doc.setTextColor(200, 200, 200);
   doc.text(

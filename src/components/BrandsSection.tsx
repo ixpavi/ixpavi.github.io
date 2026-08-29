@@ -1,7 +1,6 @@
 import { useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import parkerDistributor from "@/assets/parker-distributor.png";
-import nbcLogo from "@/assets/brands/nbc-logo.png";
 import demechLogo from "@/assets/brands/demech-logo.png";
 import { useSpotlight } from "@/hooks/use-spotlight";
 import PanelScrew from "@/components/PanelScrew";
@@ -10,13 +9,6 @@ const LOOSEN_THRESHOLD = 8;
 const SCREW_POSITIONS = ["top-left", "top-right", "bottom-left", "bottom-right"] as const;
 
 const otherBrands = [
-  {
-    slug: "nbc-bearing",
-    name: "NBC Bearing",
-    note: "Part of the CK Birla Group",
-    products: "All types of industrial bearings",
-    logo: nbcLogo,
-  },
   {
     slug: "demech-chemical",
     name: "Demech Chemical Products Pvt. Ltd.",
@@ -93,7 +85,7 @@ const BrandsSection = () => {
       <div className="container mx-auto px-4">
         <div className="mono-label text-[11px] text-yellow/80 mb-4">Authorized Distributor</div>
         <h2 className="text-3xl md:text-4xl font-display font-semibold text-white mb-10 md:mb-16 max-w-xl">
-          Genuine products, direct from three manufacturers
+          Genuine products, direct from the manufacturer
         </h2>
 
         {/* Featured Partner — Parker, as a nameplate bolted to the panel.
@@ -134,7 +126,7 @@ const BrandsSection = () => {
         </Link>
 
         {/* Other authorized brands */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid gap-4 max-w-[640px]">
           {otherBrands.map((brand, index) => (
             <BrandCard key={brand.name} brand={brand} index={index} />
           ))}

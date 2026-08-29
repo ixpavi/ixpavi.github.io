@@ -7,7 +7,7 @@ import AnimatedStat from "@/components/AnimatedStat";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 const values = [
-  { code: "01", icon: ShieldCheck, title: "Authorized Supply", description: "Genuine Parker Hannifin, NBC Bearing, and Demech products, sourced only through official channels." },
+  { code: "01", icon: ShieldCheck, title: "Authorized Supply", description: "Genuine Parker Hannifin and Demech products, sourced only through official channels." },
   { code: "02", icon: Atom, title: "Critical-Environment Experience", description: "Trusted by nuclear, thermal power, and fertilizer plants where reliability isn't optional." },
   { code: "03", icon: Users, title: "Long-Term Relationships", description: "Many customer relationships span well over a decade, built on consistent, dependable supply." },
   { code: "04", icon: MapPinned, title: "Regional Reach", description: "Serving industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat." },
@@ -16,14 +16,14 @@ const values = [
 const timeline = [
   { year: "2004", label: "Founded", description: "Yati International Inc. established in Kota, Rajasthan by Rajiv Kumar Sharma, becoming an authorized distributor for Parker Hannifin and beginning supply to nuclear and thermal power stations, where component reliability is non-negotiable." },
   { year: "2010s", label: "Major Clients", description: "Grew into many of our largest long-term customer relationships — including thermal power stations, cement manufacturers, and heavy engineering companies across the region." },
-  { year: "2020s", label: "Portfolio Expansion", description: "Added NBC Bearing and Demech Chemical Products to the distributorship, broadening into bearings and industrial coatings." },
+  { year: "2020s", label: "Portfolio Expansion", description: "Added Demech Chemical Products to the distributorship, broadening into industrial coatings." },
   { year: "Today", label: "Regional Partner", description: "Supplying plants across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat from our base in Kota." },
 ];
 
 const AboutPage = () => {
   useDocumentMeta(
     "About Yati International | Authorized Parker Hannifin Distributor Since 2004",
-    "Since 2004, Yati International has been an authorized Parker Hannifin, NBC Bearing and Demech distributor, supplying engineers and industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh and Gujarat.",
+    "Since 2004, Yati International has been an authorized Parker Hannifin and Demech distributor, supplying engineers and industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh and Gujarat.",
   );
 
   useEffect(() => {
@@ -62,10 +62,10 @@ const AboutPage = () => {
                 </p>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
                   Founded by Rajiv Kumar Sharma as an authorized distributor for Parker Hannifin in
-                  2004, we added NBC Bearing and Demech Chemical Products to the distributorship in
-                  the 2020s. We provide genuine components backed by manufacturer support —
-                  hydraulics, pneumatics, filtration, bearings, and industrial coatings — with
-                  technical guidance to match the right product to your application.
+                  2004, we added Demech Chemical Products to the distributorship in the 2020s. We
+                  provide genuine components backed by manufacturer support — hydraulics,
+                  pneumatics, filtration, and industrial coatings — with technical guidance to match
+                  the right product to your application.
                 </p>
                 <p className="text-muted-foreground mb-10 leading-relaxed">
                   We don't just supply parts — we understand the environments they run in. Many of
@@ -85,7 +85,7 @@ const AboutPage = () => {
                     <div className="mono-label text-[10px] text-muted-foreground mt-1">Parker Authorized Since</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-display font-semibold text-primary"><AnimatedStat value="3" /></div>
+                    <div className="text-3xl font-display font-semibold text-primary"><AnimatedStat value="2" /></div>
                     <div className="mono-label text-[10px] text-muted-foreground mt-1">Authorized Brands</div>
                   </div>
                 </div>
