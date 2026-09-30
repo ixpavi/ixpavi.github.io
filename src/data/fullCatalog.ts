@@ -233,7 +233,7 @@ export const catalogCategories: CatalogCategory[] = [
       { name: "AKM 1-8 Series Activated Carbon Adsorbers", description: "Removal of oil vapour in industrial compressed air applications, up to 86 m³/h @ 7 barg.", image: filterAkm18 },
       { name: "AKM 10-95 Series Activated Carbon Adsorbers", description: "Removal of oil vapour in industrial compressed air applications, up to 940 m³/h @ 7 barg." },
       { name: "OIL-X OVR Oil Vapour Reduction Filter", description: "Compact, modular oil vapour removal filters designed for compressed air meeting ISO8573-1 Class 0 or Class 1." },
-      { name: "AK 120-600 Series Activated Carbon Adsorber", description: "Activated carbon adsorbers for volume flows up to 6,100 m³/h for industrial compressed air treatment." },
+      { name: "AK 120-600 Series Activated Carbon Adsorber", description: "Activated carbon adsorbers for volume flows up to 6,100 m³/h for industrial compressed air treatment.", image: filterAk120600 },
       { name: "PCO2 Maintenance Kits", description: "Maintenance kits for PCO2 systems, containing replacement adsorption cartridges, filter elements and O-rings." },
       { name: "BHA Visolite", description: "Lightweight fluorescent powder used to facilitate finding leaks." },
       { name: "BHA Neutralite", description: "Injected into a baghouse to establish initial dust cake on new filter bags or re-establish dust cake on bags in operation." },
