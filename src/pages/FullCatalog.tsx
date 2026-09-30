@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, LayoutGrid, List, Download, Search, X, Copy, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, LayoutGrid, List, Download, Loader2, Search, X, Copy, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { catalogCategories, totalCatalogItems } from "@/data/fullCatalog";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
-import { downloadCatalogPdf } from "@/lib/catalogPdf";
 
 const brands = Array.from(new Set(catalogCategories.map((c) => c.brand)));
 const SITE_ORIGIN = "https://yatiinternational.in";
@@ -22,6 +21,17 @@ const FullCatalog = () => {
   const [stampedItem, setStampedItem] = useState<string | null>(null);
   const stampTimer = useRef<ReturnType<typeof setTimeout>>();
   const [search, setSearch] = useState("");
+  const [pdfLoading, setPdfLoading] = useState(false);
+
+  const handleDownloadPdf = async () => {
+    setPdfLoading(true);
+    try {
+      const { downloadCatalogPdf } = await import("@/lib/catalogPdf");
+      downloadCatalogPdf();
+    } finally {
+      setPdfLoading(false);
+    }
+  };
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const copyTimer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -128,11 +138,16 @@ const FullCatalog = () => {
             </p>
             <button
               type="button"
-              onClick={() => downloadCatalogPdf()}
-              className="inline-flex items-center gap-2 border border-yellow/40 text-yellow hover:bg-yellow hover:text-blueprint-deep transition-colors mono-label text-[11px] px-4 py-2.5"
+              onClick={handleDownloadPdf}
+              disabled={pdfLoading}
+              className="inline-flex items-center gap-2 border border-yellow/40 text-yellow hover:bg-yellow hover:text-blueprint-deep transition-colors mono-label text-[11px] px-4 py-2.5 disabled:opacity-60 disabled:cursor-wait"
             >
-              <Download className="w-3.5 h-3.5" />
-              Download Full Catalog (PDF)
+              {pdfLoading ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <Download className="w-3.5 h-3.5" />
+              )}
+              {pdfLoading ? "Preparing…" : "Download Full Catalog (PDF)"}
             </button>
           </div>
         </div>
