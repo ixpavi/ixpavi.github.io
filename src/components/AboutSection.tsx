@@ -1,55 +1,7 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Atom, Users, MapPinned, ArrowRight, type LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import AnimatedStat from "@/components/AnimatedStat";
-import { useTilt } from "@/hooks/use-tilt";
-
-const values = [
-  {
-    code: "01",
-    icon: ShieldCheck,
-    title: "Authorized Supply",
-    description: "Genuine Parker Hannifin and Demech products, sourced only through official channels.",
-  },
-  {
-    code: "02",
-    icon: Atom,
-    title: "Critical-Environment Experience",
-    description: "Trusted by nuclear, thermal power, and fertilizer plants where reliability isn't optional.",
-  },
-  {
-    code: "03",
-    icon: Users,
-    title: "Long-Term Relationships",
-    description: "Many customer relationships span well over a decade, built on consistent, dependable supply.",
-  },
-  {
-    code: "04",
-    icon: MapPinned,
-    title: "Regional Reach",
-    description: "Serving industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat.",
-  },
-];
-
-interface ValueCardProps {
-  code: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}
-
-const ValueCard = ({ code, icon: Icon, title, description }: ValueCardProps) => {
-  const tiltRef = useTilt<HTMLDivElement>(5);
-  return (
-    <div ref={tiltRef} className="plate p-6 card-shadow hover:card-shadow-hover transition-shadow duration-300">
-      <div className="flex items-center justify-between mb-4">
-        <Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
-        <span className="mono-label text-[10px] text-muted-foreground/60">Plate {code}</span>
-      </div>
-      <h3 className="text-base font-display font-semibold text-foreground mb-2">{title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
-    </div>
-  );
-};
+import ValuesSpecSheet from "@/components/ValuesSpecSheet";
 
 const AboutSection = () => {
   return (
@@ -97,12 +49,8 @@ const AboutSection = () => {
             </Link>
           </div>
 
-          {/* Right Content — Spec-plate values grid */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {values.map((value) => (
-              <ValueCard key={value.title} {...value} />
-            ))}
-          </div>
+          {/* Right Content — values as a spec-sheet table */}
+          <ValuesSpecSheet />
         </div>
       </div>
     </section>

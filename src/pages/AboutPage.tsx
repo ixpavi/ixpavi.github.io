@@ -1,17 +1,11 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ShieldCheck, Atom, Users, MapPinned } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedStat from "@/components/AnimatedStat";
+import ValuesSpecSheet from "@/components/ValuesSpecSheet";
 import { useDocumentMeta } from "@/hooks/use-document-meta";
-
-const values = [
-  { code: "01", icon: ShieldCheck, title: "Authorized Supply", description: "Genuine Parker Hannifin and Demech products, sourced only through official channels." },
-  { code: "02", icon: Atom, title: "Critical-Environment Experience", description: "Trusted by nuclear, thermal power, and fertilizer plants where reliability isn't optional." },
-  { code: "03", icon: Users, title: "Long-Term Relationships", description: "Many customer relationships span well over a decade, built on consistent, dependable supply." },
-  { code: "04", icon: MapPinned, title: "Regional Reach", description: "Serving industrial plants across Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat." },
-];
 
 const timeline = [
   { year: "2004", label: "Founded", description: "Yati International Inc. established in Kota, Rajasthan by Rajiv Kumar Sharma, becoming an authorized distributor for Parker Hannifin and beginning supply to nuclear and thermal power stations, where component reliability is non-negotiable." },
@@ -91,18 +85,7 @@ const AboutPage = () => {
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                {values.map((value) => (
-                  <div key={value.title} className="plate p-6 card-shadow hover:card-shadow-hover transition-shadow duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <value.icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
-                      <span className="mono-label text-[10px] text-muted-foreground/60">Plate {value.code}</span>
-                    </div>
-                    <h3 className="text-base font-display font-semibold text-foreground mb-2">{value.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
-                  </div>
-                ))}
-              </div>
+              <ValuesSpecSheet />
             </div>
 
             {/* Timeline */}
